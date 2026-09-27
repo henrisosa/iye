@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iye — Interiores · Salvador da Bahia</title>
-<meta name="description" content="Iye é um estúdio de interiores de Salvador da Bahia. A alma da Bahia dentro de casa. — Iye is an interior design studio from Salvador da Bahia. The soul of Bahia, indoors.">
+<title>Iye — Interiores · São Paulo, alma da Bahia</title>
+<meta name="description" content="Iye é um estúdio de interiores em São Paulo, com a alma da Bahia. — Iye is an interior design studio in São Paulo, with the soul of Bahia.">
 <meta name="theme-color" content="#FAF6F0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF6F0'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23E60000'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +44,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
 
 /* ---------- language visibility ---------- */
 .lang-en{display:none}
+.br-m{display:none}
 html[data-lang="en"] .lang-en{display:block}
 html[data-lang="en"] .lang-pt{display:none}
 
@@ -123,12 +124,14 @@ nav a:hover{color:var(--ink)}
 .hero .brandline{
   margin-top:1.4rem;
   font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  text-wrap:balance;max-width:26rem;
   opacity:0;animation:lineIn 1.2s var(--ease) forwards;animation-delay:3.5s;
 }
 .hero .brandline .en{
   display:block;font-size:.68rem;letter-spacing:.18em;color:var(--echo);margin-top:.4rem;
 }
 @media (max-width:520px){
+  .br-m{display:block}
   .hero .brandline{letter-spacing:.14em;font-size:.72rem}
   .hero .brandline .en{letter-spacing:.1em}
 }
@@ -301,7 +304,7 @@ footer .dot{color:var(--red)}
       <p class="attribution">verso da iye<span class="en">a verse by iye</span></p>
     </div>
     <div class="rule" aria-hidden="true"></div>
-    <p class="brandline">interiores · salvador da bahia<span class="en">interiors · salvador da bahia</span></p>
+    <p class="brandline">interiores · de salvador,<br class="br-m"> em são paulo<span class="en">interiors · from salvador, in são paulo</span></p>
     <div class="scrollhint" aria-hidden="true"></div>
   </div>
 
@@ -315,13 +318,13 @@ footer .dot{color:var(--red)}
       </div>
       <div class="body reveal">
         <div class="lang lang-pt">
-          <p>A Iye é um estúdio de interiores de Salvador da Bahia. Atrás do estúdio está um jovem designer da cidade.</p>
-          <p>Acreditamos que uma casa deve abraçar quem vive nela. Trabalhamos com a luz do Atlântico, a madeira, as fibras naturais e as cores de Salvador.</p>
+          <p>A Iye é um estúdio de interiores em São Paulo, com raízes em Salvador da Bahia. Atrás do estúdio está um jovem designer baiano.</p>
+          <p>Acreditamos que uma casa deve abraçar quem vive nela. Trabalhamos com a luz do Atlântico, a madeira, as fibras naturais e as cores da Bahia.</p>
           <p>Cada projeto começa com uma conversa — e termina num espaço com alma.</p>
         </div>
         <div class="lang lang-en">
-          <p>Iye is an interior design studio from Salvador da Bahia. Behind the studio is a young designer from the city.</p>
-          <p>We believe a home should embrace the people who live in it. We work with Atlantic light, wood, natural fibres and the colours of Salvador.</p>
+          <p>Iye is an interior design studio in São Paulo, with roots in Salvador da Bahia. Behind the studio is a young Bahian designer.</p>
+          <p>We believe a home should embrace the people who live in it. We work with Atlantic light, wood, natural fibres and the colours of Bahia.</p>
           <p>Every project begins with a conversation — and ends in a space with soul.</p>
         </div>
       </div>
@@ -518,8 +521,8 @@ footer .dot{color:var(--red)}
 </main>
 
 <footer>
-  <span>12°58′S 38°30′W — Salvador, Bahia, Brasil</span>
-  <span>© 2026 Iye<span class="dot">.</span> feito em Salvador / made in Salvador</span>
+  <span>23°33′S 46°38′W — São Paulo, Brasil</span>
+  <span>© 2026 Iye<span class="dot">.</span> de Salvador, em São Paulo / from Salvador, in São Paulo</span>
 </footer>
 
 <script>
