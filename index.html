@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iye — Interiores · Salvador da Bahia</title>
+<meta name="description" content="Iye é um estúdio de interiores de Salvador da Bahia. A alma da Bahia dentro de casa. — Iye is an interior design studio from Salvador da Bahia. The soul of Bahia, indoors.">
+<meta name="theme-color" content="#FAF6F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF6F0'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23E60000'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#FAF6F0;
+  --ink:#2B2118;
+  --echo:#A79A8B;
+  --hairline:rgba(43,33,24,.14);
+  --ocean:#00AEEF;
+  --ocean-deep:#0077A3;
+  --red:#E60000;
+  --green:#009900;
+  --orange:#FF8C00;
+  --yellow:#FFCC00;
+  --amber:#8A6D00;
+  --purple:#9C27B0;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,'Helvetica Neue',sans-serif;
+  --ease:cubic-bezier(.25,.3,.1,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(255,204,0,.35)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+/* ---------- language visibility ---------- */
+.lang-en{display:none}
+html[data-lang="en"] .lang-en{display:block}
+html[data-lang="en"] .lang-pt{display:none}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.25rem,4vw,2.75rem);
+  background:rgba(250,246,240,.86);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:transform .4s var(--ease);
+}
+header.hidden{transform:translateY(-100%)}
+.wordmark{
+  font-family:var(--serif);font-weight:500;font-size:1.3rem;letter-spacing:.02em;
+}
+.wordmark i{font-style:normal;color:var(--red)}
+nav{display:flex;align-items:center;gap:clamp(1rem,2.5vw,2rem)}
+nav a{
+  font-size:.78rem;letter-spacing:.08em;text-transform:lowercase;
+  color:var(--echo);transition:color .35s var(--ease);
+}
+nav a:hover{color:var(--ink)}
+.langtoggle{display:flex;align-items:baseline;gap:.45rem;margin-left:clamp(.5rem,2vw,1.5rem)}
+.langtoggle button{
+  background:none;border:0;cursor:pointer;font-family:var(--sans);
+  font-size:.78rem;letter-spacing:.08em;color:var(--echo);
+  padding:.2rem 0;transition:color .35s var(--ease);
+}
+.langtoggle button:hover{color:var(--ink)}
+.langtoggle button[aria-pressed="true"]{color:var(--ink);font-weight:500}
+.langtoggle .sep{color:var(--echo);font-size:.75rem}
+@media (max-width:680px){ nav a{display:none} }
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;
+  padding:7rem 1.5rem 5rem;
+  position:relative;
+}
+.poem{max-width:44rem}
+.poem .line{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.5rem,3.6vw,2.4rem);
+  line-height:1.35;
+  margin-bottom:1.15rem;
+  opacity:0;
+  animation:lineIn 1.15s var(--ease) forwards;
+  animation-delay:calc(.4s + var(--i)*.55s);
+}
+.poem .line .en{
+  display:block;
+  font-size:.52em;font-weight:300;font-style:italic;
+  color:var(--echo);
+  margin-top:.35rem;
+  letter-spacing:.01em;
+}
+@keyframes lineIn{
+  from{opacity:0;transform:translateY(16px);filter:blur(8px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.poem .attribution{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--echo);
+  margin-top:1.6rem;
+  opacity:0;animation:lineIn 1s var(--ease) forwards;animation-delay:2.9s;
+}
+.poem .attribution .en{display:block;text-transform:none;letter-spacing:.05em;font-style:italic;font-family:var(--serif)}
+.hero .rule{
+  width:1px;height:64px;margin-top:3.2rem;
+  background:linear-gradient(var(--yellow),transparent);
+  opacity:0;animation:lineIn 1.2s var(--ease) forwards;animation-delay:3.3s;
+}
+.hero .brandline{
+  margin-top:1.4rem;
+  font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  opacity:0;animation:lineIn 1.2s var(--ease) forwards;animation-delay:3.5s;
+}
+.hero .brandline .en{
+  display:block;font-size:.68rem;letter-spacing:.18em;color:var(--echo);margin-top:.4rem;
+}
+@media (max-width:520px){
+  .hero .brandline{letter-spacing:.14em;font-size:.72rem}
+  .hero .brandline .en{letter-spacing:.1em}
+}
+.scrollhint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  width:1px;height:52px;overflow:hidden;
+  opacity:0;animation:lineIn 1s var(--ease) forwards;animation-delay:4s;
+}
+.scrollhint::after{
+  content:"";position:absolute;left:0;top:-52px;width:1px;height:52px;
+  background:var(--yellow);
+  animation:drip 2.4s var(--ease) infinite;
+}
+@keyframes drip{0%{top:-52px}60%,100%{top:52px}}
+
+/* ---------- sections ---------- */
+main{max-width:72rem;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.75rem)}
+section{
+  padding:clamp(4.5rem,10vw,8.5rem) 0;
+  border-top:1px solid var(--hairline);
+}
+section:first-of-type{border-top:0}
+.split{
+  display:grid;grid-template-columns:minmax(11rem,1fr) 2.4fr;
+  gap:clamp(1.5rem,5vw,4.5rem);
+}
+@media (max-width:760px){.split{grid-template-columns:1fr;gap:1.6rem}}
+.s-label .num{
+  display:block;
+  font-size:.72rem;letter-spacing:.18em;color:var(--echo);
+  margin-bottom:.9rem;
+}
+.s-label h2{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(1.5rem,2.6vw,2rem);
+  line-height:1.2;
+}
+.s-label .en{
+  display:block;
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:.95rem;color:var(--echo);
+  margin-top:.3rem;
+}
+.body p{max-width:36rem;font-size:1.02rem}
+.body p+p{margin-top:1.1rem}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(18px);filter:blur(6px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+
+/* ---------- cores ---------- */
+.pairs{display:grid;gap:clamp(2.2rem,5vw,3.5rem)}
+.pair-head{
+  font-family:var(--serif);font-size:1.05rem;font-weight:400;margin-bottom:1rem;
+}
+.pair-head .en{display:block;font-size:.8rem;font-style:italic;font-weight:300;color:var(--echo);margin-top:.15rem}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media (max-width:520px){.pair{grid-template-columns:1fr}}
+.swatch{
+  height:clamp(7.5rem,16vw,11rem);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:1rem 1.1rem;
+}
+.swatch .name{font-family:var(--serif);font-weight:500;font-size:.98rem;line-height:1.3}
+.swatch .name .en{display:block;font-weight:300;font-style:italic;font-size:.78rem;opacity:.75;margin-top:.15rem}
+.swatch .hex{font-size:.72rem;letter-spacing:.14em;font-weight:500}
+.swatch.light{color:#fff}
+.swatch.dark{color:var(--ink)}
+.sw-red{background:var(--red)}
+.sw-green{background:var(--green)}
+.sw-ocean{background:var(--ocean)}
+.sw-orange{background:var(--orange)}
+.sw-yellow{background:var(--yellow)}
+.sw-purple{background:var(--purple)}
+.pairs-intro{margin-bottom:clamp(2.5rem,6vw,4rem);max-width:36rem}
+.pairs-intro .pt{font-family:var(--serif);font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.4}
+.pairs-intro .en{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:.95rem;color:var(--echo);margin-top:.5rem}
+
+/* ---------- list rows (services & process) ---------- */
+.rows{border-top:1px solid var(--hairline)}
+.row{
+  display:grid;grid-template-columns:3.5rem 1fr;gap:1rem;
+  align-items:baseline;
+  padding:1.35rem 0;
+  border-bottom:1px solid var(--hairline);
+}
+.row .n{font-size:.72rem;letter-spacing:.15em;color:var(--echo)}
+.row .pt-name{
+  font-family:var(--serif);font-weight:500;font-size:clamp(1.1rem,2vw,1.35rem);
+  transition:color .35s var(--ease);
+}
+.row:hover .pt-name{color:var(--amber)}
+.row .en-name{
+  display:block;font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:.85rem;color:var(--echo);margin-top:.2rem;
+}
+.row .desc{grid-column:2;margin-top:.55rem;max-width:34rem;font-size:.92rem;color:rgba(43,33,24,.78)}
+
+/* ---------- contact ---------- */
+.contact-big{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(2.2rem,6vw,4.2rem);
+  line-height:1.1;
+}
+.contact-big .en{
+  display:block;font-weight:300;font-style:italic;
+  font-size:.42em;color:var(--echo);margin-top:.6rem;
+}
+.contact-rows{margin-top:clamp(2.5rem,6vw,4rem);border-top:1px solid var(--hairline)}
+.c-row{
+  display:grid;grid-template-columns:8rem 1fr;gap:1rem;align-items:baseline;
+  padding:1.3rem 0;border-bottom:1px solid var(--hairline);
+}
+@media (max-width:520px){.c-row{grid-template-columns:1fr;gap:.2rem}}
+.c-row .lbl{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--echo)}
+.c-row a{
+  font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:400;
+  background-image:linear-gradient(var(--amber),var(--amber));
+  background-size:0% 1px;background-repeat:no-repeat;background-position:left calc(100% - 1px);
+  transition:background-size .45s var(--ease),color .35s var(--ease);
+  width:fit-content;
+}
+.c-row a:hover{background-size:100% 1px;color:var(--amber)}
+
+/* ---------- footer ---------- */
+footer{
+  max-width:72rem;margin:0 auto;
+  padding:2.2rem clamp(1.25rem,4vw,2.75rem) 3rem;
+  border-top:1px solid var(--hairline);
+  display:flex;flex-wrap:wrap;gap:.8rem 2.5rem;justify-content:space-between;
+  font-size:.75rem;letter-spacing:.1em;color:var(--echo);
+}
+footer .dot{color:var(--red)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.poem .line,.poem .attribution,.hero .rule,.hero .brandline,.scrollhint{opacity:1;transform:none;filter:none}
+  .scrollhint{display:none}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a class="wordmark" href="#top" aria-label="Iye — início / home">Iye<i>.</i></a>
+  <nav aria-label="Navegação / Navigation">
+    <a href="#manifesto">manifesto</a>
+    <a href="#cores">cores</a>
+    <a href="#servicos">serviços</a>
+    <a href="#contato">contato</a>
+    <span class="langtoggle" role="group" aria-label="Idioma / Language">
+      <button id="btn-pt" aria-pressed="true" onclick="setLang('pt')">PT</button>
+      <span class="sep">/</span>
+      <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    </span>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ ABERTURA ============ -->
+  <div class="hero">
+    <div class="poem" aria-label="Poema de abertura / Opening poem">
+      <p class="line" style="--i:0">Entre o mar e a varanda,<span class="en">Between sea and veranda,</span></p>
+      <p class="line" style="--i:1">a casa aprende a cor.<span class="en">the house learns colour.</span></p>
+      <p class="line" style="--i:2">A Bahia entra sem pedir licença —<span class="en">Bahia enters without asking —</span></p>
+      <p class="line" style="--i:3">e fica.<span class="en">and stays.</span></p>
+      <p class="attribution">verso da iye<span class="en">a verse by iye</span></p>
+    </div>
+    <div class="rule" aria-hidden="true"></div>
+    <p class="brandline">interiores · salvador da bahia<span class="en">interiors · salvador da bahia</span></p>
+    <div class="scrollhint" aria-hidden="true"></div>
+  </div>
+
+  <!-- ============ 01 MANIFESTO ============ -->
+  <section id="manifesto">
+    <div class="split">
+      <div class="s-label reveal">
+        <span class="num">01</span>
+        <h2>Manifesto</h2>
+        <span class="en">manifesto</span>
+      </div>
+      <div class="body reveal">
+        <div class="lang lang-pt">
+          <p>A Iye é um estúdio de interiores de Salvador da Bahia. Atrás do estúdio está um jovem designer da cidade.</p>
+          <p>Acreditamos que uma casa deve abraçar quem vive nela. Trabalhamos com a luz do Atlântico, a madeira, as fibras naturais e as cores de Salvador.</p>
+          <p>Cada projeto começa com uma conversa — e termina num espaço com alma.</p>
+        </div>
+        <div class="lang lang-en">
+          <p>Iye is an interior design studio from Salvador da Bahia. Behind the studio is a young designer from the city.</p>
+          <p>We believe a home should embrace the people who live in it. We work with Atlantic light, wood, natural fibres and the colours of Salvador.</p>
+          <p>Every project begins with a conversation — and ends in a space with soul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 CORES DA BAHIA ============ -->
+  <section id="cores">
+    <div class="split">
+      <div class="s-label reveal">
+        <span class="num">02</span>
+        <h2>Cores da Bahia</h2>
+        <span class="en">colours of bahia</span>
+      </div>
+      <div class="reveal">
+        <div class="pairs-intro">
+          <span class="pt">Três pares. O mar, o sol, a festa.<span class="en">Three pairs. The sea, the sun, the festa.</span></span>
+        </div>
+        <div class="pairs">
+
+          <div>
+            <p class="pair-head">Paixão &amp; natureza<span class="en">passion &amp; nature</span></p>
+            <div class="pair">
+              <div class="swatch sw-red light">
+                <p class="name">Vermelho Bahia<span class="en">bahia red</span></p>
+                <p class="hex">#E60000</p>
+              </div>
+              <div class="swatch sw-green light">
+                <p class="name">Verde Tropical<span class="en">tropical green</span></p>
+                <p class="hex">#009900</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="pair-head">Oceano &amp; sol<span class="en">ocean &amp; sun</span></p>
+            <div class="pair">
+              <div class="swatch sw-ocean dark">
+                <p class="name">Azul Oceano<span class="en">ocean blue</span></p>
+                <p class="hex">#00AEEF</p>
+              </div>
+              <div class="swatch sw-orange dark">
+                <p class="name">Laranja Solar<span class="en">solar orange</span></p>
+                <p class="hex">#FF8C00</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="pair-head">Luz &amp; mistério<span class="en">light &amp; mystery</span></p>
+            <div class="pair">
+              <div class="swatch sw-yellow dark">
+                <p class="name">Amarelo Sol<span class="en">sunshine yellow</span></p>
+                <p class="hex">#FFCC00</p>
+              </div>
+              <div class="swatch sw-purple light">
+                <p class="name">Roxo Carnaval<span class="en">carnival purple</span></p>
+                <p class="hex">#9C27B0</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 O QUE FAZEMOS ============ -->
+  <section id="servicos">
+    <div class="split">
+      <div class="s-label reveal">
+        <span class="num">03</span>
+        <h2>O que fazemos</h2>
+        <span class="en">what we do</span>
+      </div>
+      <div class="rows reveal">
+        <div class="row">
+          <span class="n">01</span>
+          <div>
+            <span class="pt-name">Consultoria de cores</span>
+            <span class="en-name">colour consulting</span>
+            <div class="desc lang lang-pt">Uma paleta para a sua casa, nascida da luz de Salvador.</div>
+            <div class="desc lang lang-en">A palette for your home, born from Salvador's light.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">02</span>
+          <div>
+            <span class="pt-name">Projeto residencial</span>
+            <span class="en-name">residential design</span>
+            <div class="desc lang lang-pt">Ambientes completos, do primeiro desenho ao último detalhe.</div>
+            <div class="desc lang lang-en">Complete rooms, from the first sketch to the last detail.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">03</span>
+          <div>
+            <span class="pt-name">Ambientes comerciais</span>
+            <span class="en-name">commercial spaces</span>
+            <div class="desc lang lang-pt">Lojas, cafés e escritórios com a alma da Bahia.</div>
+            <div class="desc lang lang-en">Shops, cafés and offices with the soul of Bahia.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">04</span>
+          <div>
+            <span class="pt-name">Projeto online</span>
+            <span class="en-name">online projects</span>
+            <div class="desc lang lang-pt">Onde você estiver. Conversa, moodboard e projeto à distância.</div>
+            <div class="desc lang lang-en">Wherever you are. Conversation, moodboard and project, remotely.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 COMO FUNCIONA ============ -->
+  <section id="processo">
+    <div class="split">
+      <div class="s-label reveal">
+        <span class="num">04</span>
+        <h2>Como funciona</h2>
+        <span class="en">how it works</span>
+      </div>
+      <div class="rows reveal">
+        <div class="row">
+          <span class="n">01</span>
+          <div>
+            <span class="pt-name">Conversa</span>
+            <span class="en-name">conversation</span>
+            <div class="desc lang lang-pt">Escutamos como você vive e do que a sua casa precisa.</div>
+            <div class="desc lang lang-en">We listen to how you live and what your home needs.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">02</span>
+          <div>
+            <span class="pt-name">Moodboard</span>
+            <span class="en-name">moodboard</span>
+            <div class="desc lang lang-pt">Cores, materiais e referências de Salvador ganham forma.</div>
+            <div class="desc lang lang-en">Colours, materials and references from Salvador take shape.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">03</span>
+          <div>
+            <span class="pt-name">Projeto</span>
+            <span class="en-name">project</span>
+            <div class="desc lang lang-pt">Desenhamos cada ambiente, do piso à luz.</div>
+            <div class="desc lang lang-en">We design every room, from floor to light.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="n">04</span>
+          <div>
+            <span class="pt-name">Acompanhamento</span>
+            <span class="en-name">follow-up</span>
+            <div class="desc lang lang-pt">Acompanhamos a obra até o último detalhe.</div>
+            <div class="desc lang lang-en">We follow the work through to the last detail.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 CONTATO ============ -->
+  <section id="contato">
+    <div class="split">
+      <div class="s-label reveal">
+        <span class="num">05</span>
+        <h2>Contato</h2>
+        <span class="en">contact</span>
+      </div>
+      <div class="reveal">
+        <p class="contact-big">Vamos conversar.<span class="en">Let's talk.</span></p>
+        <div class="contact-rows">
+          <div class="c-row">
+            <span class="lbl">WhatsApp</span>
+            <a href="https://wa.me/5511945026556" target="_blank" rel="noopener">+55 11 94502-6556</a>
+          </div>
+          <div class="c-row">
+            <span class="lbl">E-mail</span>
+            <a href="mailto:hello@iye.agency">hello@iye.agency</a>
+          </div>
+          <div class="c-row">
+            <span class="lbl">Instagram</span>
+            <a href="https://instagram.com/iye.agency" target="_blank" rel="noopener">@iye.agency</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>12°58′S 38°30′W — Salvador, Bahia, Brasil</span>
+  <span>© 2026 Iye<span class="dot">.</span> feito em Salvador / made in Salvador</span>
+</footer>
+
+<script>
+/* language toggle */
+function setLang(l){
+  document.documentElement.dataset.lang = l;
+  document.documentElement.lang = (l === 'pt') ? 'pt-BR' : 'en';
+  document.getElementById('btn-pt').setAttribute('aria-pressed', l === 'pt');
+  document.getElementById('btn-en').setAttribute('aria-pressed', l === 'en');
+  try{ localStorage.setItem('iye-lang', l); }catch(e){}
+}
+try{
+  var stored = localStorage.getItem('iye-lang');
+  if(stored === 'en' || stored === 'pt'){ setLang(stored); }
+}catch(e){}
+
+/* reveal on scroll */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+/* header hides on scroll down, returns on scroll up */
+var lastY = 0, header = document.getElementById('header');
+window.addEventListener('scroll', function(){
+  var y = window.scrollY;
+  if(y > 140 && y > lastY){ header.classList.add('hidden'); }
+  else{ header.classList.remove('hidden'); }
+  lastY = y;
+},{passive:true});
+</script>
+</body>
+</html>
